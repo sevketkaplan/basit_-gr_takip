@@ -1,0 +1,22 @@
+<%= form_with(model: sinif, local: true) do |form| %>
+  <% if sinif.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sinif.errors.count, "error") %> prohibited this sinif from being saved:</h2>
+
+      <ul>
+      <% sinif.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :adi %>
+    <%= form.text_field :adi %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

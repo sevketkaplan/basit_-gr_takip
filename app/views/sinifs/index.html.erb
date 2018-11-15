@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sinifs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Adi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sinifs.each do |sinif| %>
+      <tr>
+        <td><%= sinif.adi %></td>
+        <td><%= link_to 'Show', sinif %></td>
+        <td><%= link_to 'Edit', edit_sinif_path(sinif) %></td>
+        <td><%= link_to 'Destroy', sinif, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sinif', new_sinif_path %>

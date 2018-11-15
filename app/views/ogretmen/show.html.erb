@@ -1,0 +1,126 @@
+ <style type="text/css">
+ .bmd-label-floating{
+  font-size: 16px;
+  color: black;
+}
+</style>
+<body>
+  <div class="wrapper ">
+    <%= render 'shared/sidebar'%>
+    <div class="main-panel">
+      <%= render 'shared/navbar'%>
+
+      <div class="content">
+
+        <div class="container-fluid">
+         <div class="row">
+
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Öğretmen Bilgileri</h4>
+
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                      <%= image_tag @ogretman.avatar.url,class: "img-thumbnail", style:"margin-left:40px; width:200px; height:200px;" %>
+                   </div>
+                   <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adı: </label>
+                          <label class="bmd-label-floating"><%= @ogretman.adi %>
+                          </label>
+
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Soyadı: </label>
+                          <label class="bmd-label-floating"><%= @ogretman.soyadi %>
+                          </label>
+
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+
+
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">TC NO: </label>
+                          <label class="bmd-label-floating"><%= @ogretman.tc_no %></label>
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Kan Grubu </label>
+                          <label class="bmd-label-floating"><%= @ogretman.kan_grubu %></label>
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Branşı:</label>
+                          <label class="bmd-label-floating"><%= @ogretman.brans %></label>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+
+               <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Adres: </label>
+                    <label class="bmd-label-floating"><%= @ogretman.adres %>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Telefon Numarası: </label>
+                    <label class="bmd-label-floating"><%= @ogretman.tel %>
+                    </label>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Telefon Numarası 2: </label>
+                    <label class="bmd-label-floating"><%= @ogretman.tel2 %>
+                    </label>
+
+                  </div>
+                </div>
+              </div> 
+              <%= link_to 'Hesap oluştur', new2_user_path(:ogrid => @ogretman.id) %> |
+              <%= link_to 'Edit', edit_ogretman_path(@ogretman) %> |
+              <%= link_to 'Back', ogretmen_path %>
+
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'shared/footer'%>
+  </div>
+</div>
+</body>
+
+
+
+
+

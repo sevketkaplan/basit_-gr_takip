@@ -1,0 +1,128 @@
+
+
+
+<div class="wrapper ">
+  <%= render 'shared/sidebar'%>
+  <div class="main-panel">
+    <%= render 'shared/navbar'%>
+    <div class="content">
+      <%= form_with(model: odev, local: true) do |form| %>
+
+      <% if odev.errors.any? %>
+      <div id="error_explanation">
+        <h2> <div class="alert alert-primary">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+          </button>
+          <span>
+            <b> Mesaj: </b> <%= pluralize(odev.errors.count, "error") %> </span>
+          </div>prohibited this ogrenci from being saved:</h2>
+
+
+        </div>
+        <% end %>
+        <body>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-2"></div>
+
+              <div class="col-md-8">
+
+
+
+
+                <% if flash[:notice] %>
+                <div class="alert alert-warning">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="material-icons">close</i>
+                  </button>
+                  <span><%= flash[:notice] %>
+                  </span>
+                </div>
+                <% end %>
+
+                <% if odev.ogrid.blank? %>
+                <% ogrid = params[:id] %>
+                <% else %>
+                <% ogrid = odev.ogrid  %>
+                <% end %>
+
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Ödev Kayıt</h4>
+                    <p class="card-category">Öğrenci Ödev Kayıt Formu</p>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Adı</label>
+                            <%= form.text_field :ad , :value=> Ogrenci.find_by(ogrid).adi, class: "form-control"%>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Soyadı</label>
+                            <%= form.text_field :soyad , :value=> Ogrenci.find_by(ogrid).soyadi, class: "form-control"%>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Ogrenci No:</label>
+                            <%= form.text_field :ogrid , :value=> Ogrenci.find_by(ogrid).id, class: "disable form-control"%>                            
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Sınıfı</label>
+                            <%= form.text_field :sinif , :value=> Ogrenci.find_by(ogrid).sinif, class: "form-control"%>                            
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="">Teslim Tarihi</label>
+                            <%= form.date_field :teslim_date,class: "form-control" %>                           
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Dersin Adı</label>
+                            <%= form.text_field :ders_adi,class: "form-control" %>                         
+                          </div>
+                        </div>
+                      </div>                 
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Ödev Açıklaması(İçeriği)</label>
+                            <%= form.text_area :aciklama,class: "form-control" %>                           
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <%= link_to 'Back', :back, class: "btn btn-primary pull-left" %>
+                      <button type="submit" name="commit" class="btn btn-primary pull-right">Kaydet</button>
+                      <div class="clearfix"></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+
+        </div>
+        <%= render 'shared/footer'%>
+      </div>
+    </div>
+  </body>
+
+
+  <% end %>

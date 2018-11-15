@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Öğrenciler">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Adı</Data></Cell>
+        <Cell><Data ss:Type="String">Soyadı</Data></Cell>
+        <Cell><Data ss:Type="String">Sınıf</Data></Cell>
+        <Cell><Data ss:Type="String">Ders Adı</Data></Cell>
+        <Cell><Data ss:Type="String">Verildiği Tarih</Data></Cell>
+        <Cell><Data ss:Type="String">Teslim Tarihi</Data></Cell>
+
+
+      </Row>
+      <% @odevs.each do |odevs| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= odev.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.ad %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.soyad %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.sinif %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.ders_adi %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= odev.teslim_date %></Data></Cell>
+      </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

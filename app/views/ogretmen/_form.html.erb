@@ -1,0 +1,152 @@
+ <div class="wrapper ">
+  <%= render 'shared/sidebar'%>
+  <div class="main-panel">
+    <%= render 'shared/navbar'%>
+    <div class="content">
+      <%= form_with(model: ogretman, local: true) do |form| %>
+      <% if ogretman.errors.any? %>
+      <div id="error_explanation">
+        <h2> <div class="alert alert-primary">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+          </button>
+          <span>
+            <b> Mesaj: </b> <%= pluralize(ogretman.errors.count, "error") %> </span>
+          </div>prohibited this ogrenci from being saved:</h2>
+
+
+          <ul>
+            <% ogretman.errors.full_messages.each do |message| %>
+
+
+            <div class="alert alert-primary">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+              </button>
+              <span>
+                <b> Mesaj: </b> <%= message %></span>
+              </div>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <body>
+
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                 <% if flash[:notice] %>
+
+                 <div class="alert alert-warning">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="material-icons">close</i>
+                  </button>
+                  <span><%= flash[:notice] %>
+                  </span>
+                </div>
+                <% end %>
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Öğrenci Kayıt</h4>
+                    <p class="card-category">Öğrenci Kayıt Formu</p>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                     <form>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Adı</label>
+                            <%= form.text_field :adi, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Soyadı</label>
+                            <%= form.text_field :soyadi,class: "form-control" %>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">TC Kimlik Numarası</label>
+                            <%= form.text_field :tc_no, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Kan Grubu</label>
+                            <%= form.text_field :kan_grubu,class: "form-control" %>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Branşı</label>
+                            <%= form.text_field :brans, class: "form-control" %>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Telefon Numarası</label>
+                            <%= form.text_field :tel, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Telefon Numarası 2</label>
+                            <%= form.text_field :tel2,class: "form-control" %>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="">
+                            <label class="bmd-label-floating">Öğretmenin Resmi</label>
+                            <%= form.file_field :avatar, class: "form-control" %>                          
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">Ev Adresi</label>
+                            <%= form.text_field :adres,class: "form-control" %>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <%= link_to 'Back', :back, class: "btn btn-primary pull-left" %>
+                      <button type="submit" name="commit" class="btn btn-primary pull-right">Kaydet</button>
+                      <div class="clearfix"></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+
+        </div>
+        <%= render 'shared/footer'%>
+      </div>
+    </div>
+  </body>
+
+
+  <% end %>
+
+

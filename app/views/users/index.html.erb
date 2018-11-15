@@ -1,0 +1,59 @@
+<body>
+	<div class="wrapper ">
+		<%= render 'shared/sidebar'%>
+		<div class="main-panel">
+			<%= render 'shared/navbar'%>
+			<div class="content">
+
+				<div class="container-fluid">
+
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header card-header-primary">
+								<h4 class="card-title ">Öğrenciler</h4>
+								<p class="card-category">Öğrenci Bilgileri</p>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Kullanıcı Adı</th>
+												<th>Email</th>
+												<th>Hesabın Oluşturulma Tarihi</th>
+												<th>Son Girdiği IP</th>
+												<th>Kullanıcı Rolü</th>
+												<th>Kullanıcı Hesap Ayarları</th>
+
+
+											</tr>
+
+										</thead>
+										<tbody>
+											<% @users.each do |user| %>
+											<tr data-expanded="true">
+												<td><%= user.username %></td>
+												<td><%= user.email %></td>
+												<td><%= user.role %></td>
+												<td><%= user.created_at.strftime("%d-%m-%Y") %></td>
+												<td><%=user.last_sign_in_ip%></td>
+
+
+												<td class="text-center"> <%= link_to '', edit_user_path(user) , class:"btn btn-warning fa fa-edit " , style:"font-size:1em;"%></td>
+
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<%= render 'shared/footer'%>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adi: MyString
+  soyadi: MyString
+  tc_no: MyString
+  kan_grubu: MyString
+  aldigi_ucret: 1.5
+  tel: MyString
+  tel2: MyString
+
+two:
+  adi: MyString
+  soyadi: MyString
+  tc_no: MyString
+  kan_grubu: MyString
+  aldigi_ucret: 1.5
+  tel: MyString
+  tel2: MyString

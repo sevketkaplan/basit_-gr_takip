@@ -1,0 +1,172 @@
+ <div class="wrapper ">
+  <%= render 'shared/sidebar'%>
+  <div class="main-panel">
+    <%= render 'shared/navbar'%>
+    <div class="content">
+      <%= form_with(model: devamsizlik, local: true) do |form| %>
+      <% if devamsizlik.errors.any? %>
+      <div id="error_explanation">
+        <h2> <div class="alert alert-primary">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+          </button>
+          <span>
+            <b> Mesaj: </b> <%= pluralize(devamsizlik.errors.count, "error") %> </span>
+          </div>prohibited this ogrenci from being saved:</h2>
+
+
+          <ul>
+            <% devamsizlik.errors.full_messages.each do |message| %>
+
+
+            <div class="alert alert-primary">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+              </button>
+              <span>
+                <b> Mesaj: </b> <%= message %></span>
+              </div>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <% if devamsizlik.tc_no.blank? %>
+          <% ogrid = params[:tc_no] %>
+          <% else %>
+          <% ogrid = devamsizlik.tc_no  %>
+          <% end %>
+
+          <body>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title">Öğrenci Devamsızlık Kayıt</h4>
+                      <p class="card-category">Öğrenci Devamsızlık Kayıt Formu</p>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                       <form>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Adı</label>
+                              <%= form.text_field :ad , :value=> Ogrenci.find_by(ogrid).adi, class: "form-control"%>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Soyadı</label>
+                              <%= form.text_field :soyad , :value=> Ogrenci.find_by(ogrid).soyadi, class: "form-control" %>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">TC Kimlik Numarası</label>
+                              <%= form.text_field :tc_no , :value=> Ogrenci.find_by(ogrid).id, class: "form-control" %>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Veli Telefonu</label>
+                              <%= form.text_field :mesaj_tel , :value=> Ogrenci.find_by(ogrid).veli_tel, class: "form-control" %>                            
+                            </div>
+                          </div>
+
+
+                        </div>
+
+
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Devamsızlık Miktarı</label>
+                              <%= form.select :devamsizlik_miktari, [['Yarım Gün',"Yarım Gün"],['Tam Gün',"Tam Gün"]], class: "form-control" %>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Sınıfı</label>
+                              <%= form.collection_select :ogrsinif, Sinif.select(:adi),:adi,:adi, class: "form-control"%>
+                            </div>
+                          </div>
+                        </div>
+
+                        <%= link_to 'Back', :back, class: "btn btn-primary pull-left" %>
+                        <button type="submit" name="commit" class="btn btn-primary pull-right">Kaydet</button>
+                        <div class="clearfix"></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+
+          </div>
+          <%= render 'shared/footer'%>
+        </div>
+      </div>
+    </body>
+
+
+    <% end %>
+
+
+
+
+    <%= form_with(model: devamsizlik, local: true) do |form| %>
+    <% if devamsizlik.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(devamsizlik.errors.count, "error") %> prohibited this devamsizlik from being saved:</h2>
+
+      <ul>
+        <% devamsizlik.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :ad %>
+      <%= form.text_field :ad %>
+    </div>
+
+    <div class="field">
+      <%= form.label :soyad %>
+      <%= form.text_field :soyad %>
+    </div>
+
+    <div class="field">
+      <%= form.label :tc_no %>
+      <%= form.text_field :tc_no %>
+    </div>
+
+    <div class="field">
+      <%= form.label :mesaj_tel %>
+      <%= form.text_field :mesaj_tel %>
+    </div>
+
+    <div class="field">
+      <%= form.label :ogrsinif %>
+      <%= form.text_field :ogrsinif %>
+    </div>
+
+    <div class="field">
+      <%= form.label :devamsizlik_miktari %>
+      <%= form.text_field :devamsizlik_miktari %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <% end %>

@@ -1,0 +1,2 @@
+class Sinif < ApplicationRecord
+end

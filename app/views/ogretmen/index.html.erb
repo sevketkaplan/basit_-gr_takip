@@ -1,0 +1,78 @@
+<body>
+  <div class="wrapper ">
+    <%= render 'shared/sidebar'%>
+    <div class="main-panel">
+      <%= render 'shared/navbar'%>
+      <div class="content">
+       <p id="notice"><%= notice %></p>
+
+
+
+       
+       <div class="container-fluid">
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-warning">
+              <h2 class="card-title">Öğrenciler</h2>
+              <h4 class="card-category">Öğrenci Bilgileri</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="row" style="padding-left: 50px;">
+                  <%=search_form_for @search do |f| %>
+                  
+                  <label class="">TC NO</label>
+                  <%= f.text_field :tc_no_cont%>
+                  
+                  
+                  <label class="">Başlangıç Tarih</label>
+                  <%=f.date_field :created_at_gteq%>
+                  
+                  
+                  <label class="">Son Tarih</label>
+                  <%=f.date_field :created_at_lteq%>
+                  
+
+                  <%=f.submit "Arama Yap", class: "btn btn-primary" %>
+                  <%end%>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Adi</th>
+                      <th>Soyadi</th>
+                      <th>Tc no</th>
+                      <th>Branş</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @ogretmen.each do |ogretmen| %>
+                    <tr>
+                      <td><%= ogretmen.adi %></td>
+                      <td><%= ogretmen.soyadi %></td>
+                      <td><%= ogretmen.tc_no %></td>
+                      <td><%= ogretmen.brans %></td>
+
+                      <td><%= link_to 'Show', ogretmen, class: "btn btn-primary" %></td>
+                      <td><%= link_to 'Edit', edit_ogretman_path(ogretmen), class: "btn btn-primary" %></td>
+                      <td><%= link_to 'Destroy', ogretmen, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+                      <td><%= link_to 'New Ogrenci', new_ogretman_path ,class: "btn btn-primary"%></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%= render 'shared/footer'%>
+  </div>
+</div>
+</body>
+

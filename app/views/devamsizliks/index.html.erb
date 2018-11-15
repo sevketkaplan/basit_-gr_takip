@@ -1,0 +1,88 @@
+<style type="text/css">
+.fa-eye{
+
+}
+</style>
+<body>
+  <div class="wrapper ">
+    <%= render 'shared/sidebar'%>
+    <div class="main-panel">
+      <%= render 'shared/navbar'%>
+      <div class="content">
+       <p id="notice"><%= notice %></p>
+
+
+
+       
+       <div class="container-fluid">
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-warning">
+              <h2 class="card-title">Devamsızlıklar</h2>
+              <h4 class="card-category">Öğrenci Devamsızlık Bilgileri</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="row" style="padding-left: 50px;">
+                  <%=search_form_for @search do |f| %>
+                  
+                  <label class="">TC NO</label>
+                  <%= f.text_field :tc_no_cont%>
+                  
+                  
+                  <label class="">Başlangıç Tarih</label>
+                  <%=f.date_field :created_at_gteq%>
+                  
+                  
+                  <label class="">Son Tarih</label>
+                  <%=f.date_field :created_at_lteq%>
+                  
+                  <%=f.submit "Arama Yap", class: "btn btn-primary" %>
+                  <%end%>
+                  
+                </div>
+                <table class="table">
+                 <thead>
+                  <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th class="text-center">Ogrenci No</th>
+                    <th>Mesaj tel</th>
+                    <th>Ogrsinif</th>
+                    <th class="text-center">Devamsizlik miktari</th>
+                    <th class="text-center">Devamsızlık Tarihi</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <% @devamsizliks.each do |devamsizlik| %>
+                  <tr>
+                   <td><%= devamsizlik.ad %></td>
+                   <td><%= devamsizlik.soyad %></td>
+                   <td><%= devamsizlik.tc_no %></td>
+                   <td><%= devamsizlik.mesaj_tel %></td>
+                   <td><%= devamsizlik.ogrsinif %></td>
+                   <td><%= devamsizlik.devamsizlik_miktari %></td>
+                   <td><%= devamsizlik.created_at.strftime("%d-%m-%Y")%></td>
+                   <td><%= link_to '', devamsizlik, class: "btn btn-primary fa fa-eye", style:"font-size:1em;" %></td>
+                   <td><%= link_to '', edit_devamsizlik_path(devamsizlik), class: "btn btn-primary fa fa-edit", style: "font-size: 1em" %></td>
+                   <td><%= link_to '', devamsizlik, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary fa fa-trash-alt", style:"font-size:1em;"  %></td>
+
+                 </tr>
+                 <% end %>
+               </tbody>
+             </table>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+ </div>
+ <%= render 'shared/footer'%>
+</div>
+</div>
+</body>
+

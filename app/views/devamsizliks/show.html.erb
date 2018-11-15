@@ -1,0 +1,103 @@
+<style type="text/css">
+.bmd-label-floating{
+  font-size: 16px;
+  color: black;
+}
+</style>
+<body>
+  <div class="wrapper ">
+    <%= render 'shared/sidebar'%>
+    <div class="main-panel">
+      <%= render 'shared/navbar'%>
+
+      <div class="content">
+
+        <div class="container-fluid">
+         <div class="row">
+
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Öğrenci Bilgileri</h4>
+
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                     <%= image_tag @ogrenci.avatar.url,class: "img-thumbnail", style:"margin-left:40px; width:200px; height:200px;" %>
+                   </div>
+
+                   <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adı: </label>
+                          <label class="bmd-label-floating"><%= @devamsizlik.ad %>
+                          </label>
+
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Soyadı: </label>
+                          <label class="bmd-label-floating"><%= @devamsizlik.soyad %>
+                          </label>
+
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+
+
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Tel No : </label>
+                          <label class="bmd-label-floating"><%= @devamsizlik.mesaj_tel %></label>
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Devamsızlık Miktarı: </label>
+                          <label class="bmd-label-floating"><%= @devamsizlik.devamsizlik_miktari %></label>
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Tarih:</label>
+                          <label class="bmd-label-floating"><%= @devamsizlik.created_at.strftime("%d-%m-%Y")%></label>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+
+
+                <%if current_user.yonetici?%>
+
+                <%= link_to 'Edit', edit_devamsizlik_path(@devamsizlik) , class: "btn btn-primary"%> 
+                <%= link_to 'Back', devamsizliks_path, class: "btn btn-primary" %>
+
+                <%end%>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render 'shared/footer'%>
+    </div>
+  </div>
+</body>
+
+

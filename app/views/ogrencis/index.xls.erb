@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Öğrenciler">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Adı</Data></Cell>
+        <Cell><Data ss:Type="String">Soyadı</Data></Cell>
+       
+      </Row>
+      <% @ogrencis.each do |ogrenci| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= ogrenci.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= ogrenci.adi %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= ogrenci.soyadi %></Data></Cell>
+      </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
